@@ -1,11 +1,16 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import pageNotFound from "./pageNotFound.jpg";
 
-export function NotFound(){
-return <div><img src="https://img.freepik.com/premium-vector/modern-minimal-found-error-icon-oops-page-found-404-error-page-found-with-concept_599740-716.jpg?w=996"/>
- <Link to={"/"} className=" text-5xl bg-red-300 text-center px-2"><div className="text-3xl text-indigo-500 px-2 bg-red-300 mx-3 my-4">back</div></Link>
-
-</div>
+export function NotFound() {
+  return (
+    <div>
+      <img src={pageNotFound} />
+      <Link to={"/"} className="px-2 text-5xl text-center bg-red-300 ">
+        <div className="px-2 mx-3 my-4 text-3xl text-indigo-500 bg-red-300">
+          back
+        </div>
+      </Link>
+    </div>
+  );
 }
-
-
