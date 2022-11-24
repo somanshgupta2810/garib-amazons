@@ -11,8 +11,8 @@ function Maindetail() {
   const [loading, Setloading] = useState(true);
   useEffect(function () {
     const data = GetProductList();
-    data.then(function (productss) {
-      SetProductList(productss);
+    data.then(function (products) {
+      SetProductList(products);
     });
   }, []);
 
@@ -54,7 +54,7 @@ function Maindetail() {
             onChange={handleQueryChange}
           />
           <select
-            className="border border-current mx-2 my-20"
+            className="mx-2 my-20 border border-current"
             value={sort}
             onChange={handleSortChange}
           >

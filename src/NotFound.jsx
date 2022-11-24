@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import pageNotFound from "./pageNotFound.jpg";
+import Login from "./Login";
 
 export function NotFound() {
   return (
@@ -10,6 +11,9 @@ export function NotFound() {
         <div className="px-2 mx-3 my-4 text-3xl text-indigo-500 bg-red-300">
           back
         </div>
+      </Link>
+      <Link to={"/login"} className="text-5xl">
+        <div>Login</div>
       </Link>
     </div>
   );

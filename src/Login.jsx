@@ -21,23 +21,28 @@ function Login() {
   return (
     <form
       onSubmit={callLoginApi}
-      className="flex h-screen w-full justify-center place-items-center bg-gray-300"
+      className="flex justify-center w-full h-screen bg-gray-300 place-items-center"
     >
-      <div className="flex flex-col bg-white p-10 rounded-lg">
-        <h1 className="text-3xl font-extrabold my-5">Login To Garib-Amazon</h1>
+      <div className="flex flex-col p-10 bg-white rounded-lg">
+        <h1 className="my-5 text-3xl font-extrabold">Login To Garib-Amazon</h1>
         <input
           className="h-10 border-2"
           placeholder="Enter The Email Address"
           onChange={handleEmailChange}
+          required
           type="email"
         />
         <input
-          className="h-10 border-2"
+          className="h-10 border-2 hover:border-red-500"
           placeholder="Enter The Password"
           onChange={handlePasswordChange}
           type="password"
+          required
         />
-        <button className="text-2xl bg-purple-600 text-white mt-8">
+        <button
+          className="mt-8 text-2xl text-white bg-purple-600 hover:bg-orange-600"
+          type="submit"
+        >
           Login
         </button>
       </div>
