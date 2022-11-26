@@ -1,26 +1,27 @@
 import React from "react";
-import { useState } from "react";
+import { Formik, useFormik } from "formik";
+import * as yup from "yup";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState();
-
-  function callLoginApi(event) {
-    event.preventDefault(),
-      console.log("email is", email, "password is", password);
+  function callLoginApi(values) {
+    console.log("email is", values.email, values.password);
   }
-
-  function handleEmailChange(event) {
-    setEmail(event.target.value);
-  }
-
-  function handlePasswordChange(event) {
-    setPassword(event.target.value);
-  }
+  const schema = yup.object().shape({
+    email: yup.string().required(),
+    password: yup.string().required().min(5),
+  });
+  const { handleSubmit, values, handleChange, resetForm } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: callLoginApi,
+    validationSchema: schema,
+  });
 
   return (
     <form
-      onSubmit={callLoginApi}
+      onSubmit={handleSubmit}
       className="flex justify-center w-full h-screen bg-gray-300 place-items-center"
     >
       <div className="flex flex-col p-10 bg-white rounded-lg">
@@ -28,22 +29,33 @@ function Login() {
         <input
           className="h-10 border-2"
           placeholder="Enter The Email Address"
-          onChange={handleEmailChange}
-          required
+          name="email"
+          id="email"
+          onChange={handleChange}
+          value={values.email}
           type="email"
         />
         <input
           className="h-10 border-2 hover:border-red-500"
           placeholder="Enter The Password"
-          onChange={handlePasswordChange}
+          onChange={handleChange}
+          value={values.password}
+          name="password"
+          id="password"
           type="password"
-          required
         />
         <button
           className="mt-8 text-2xl text-white bg-purple-600 hover:bg-orange-600"
           type="submit"
         >
           Login
+        </button>
+        <button
+          className="mt-8 text-2xl text-white bg-purple-600 hover:bg-orange-600"
+          onClick={resetForm}
+          type="button"
+        >
+          Reset
         </button>
       </div>
     </form>
