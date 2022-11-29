@@ -38,7 +38,7 @@ function App() {
   }, 0);
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex flex-col h-screen">
       <Navbar productAcount={totalCount} />
       <div className="grow">
         <Routes>
